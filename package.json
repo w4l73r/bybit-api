@@ -1,6 +1,6 @@
 {
   "name": "bybit-api",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "description": "Complete & robust Node.js SDK for Bybit's REST APIs and WebSockets, with TypeScript & strong end to end tests.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "axios": "^0.21.0",
+    "http": "^0.0.1-security",
     "isomorphic-ws": "^4.0.1",
     "ws": "^7.4.0"
   },

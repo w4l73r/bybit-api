@@ -153,7 +153,7 @@ export function isTopicSubscriptionSuccess(
   return msg.success === true;
 }
 
-export const APIID = 'bybitapinode';
+export const APIID = 'Kryll';
 
 /**
  * Used to switch how authentication/requests work under the hood (primarily for SPOT since it's different there)

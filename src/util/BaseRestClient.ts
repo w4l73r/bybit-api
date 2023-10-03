@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import https  from 'https';
+import http from 'http';
 
 import {
   APIID,
@@ -129,6 +131,7 @@ export default abstract class BaseRestClient {
       ...networkOptions,
       headers: {
         'x-referer': APIID,
+        'Referer': APIID        
       },
     };
 
@@ -146,6 +149,10 @@ export default abstract class BaseRestClient {
       this.syncTime();
       setInterval(this.syncTime.bind(this), +this.options.sync_interval_ms!);
     }
+  }
+
+  setRequestOptions(optionKey: string, optionValue: any) {
+    this.globalRequestOptions[optionKey]=optionValue;
   }
 
   private isSpotV1Client() {
@@ -315,6 +322,9 @@ export default abstract class BaseRestClient {
       isPublicApi,
     );
 
+    options.httpsAgent = new https.Agent(options)
+    options.httpAgent = new http.Agent(options)
+    
     if (ENABLE_HTTP_TRACE) {
       console.log('full request: ', options);
     }
